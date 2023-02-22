@@ -190,6 +190,7 @@ controls.saveState()
 // Resets camera rotation + selected floor
 reset.addEventListener('click', () => {
     goto.className = "goto-inactive"
+    goto.innerHTML = "Select a floor"
     selectedFloor = null
     controls.reset()
     selected.visible = false
