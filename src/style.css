@@ -1,0 +1,74 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body
+{
+    overflow: hidden;
+}
+
+body
+{
+    background-color:rgb(212, 231, 229);
+}
+
+.webgl
+{
+    position: fixed;
+    top: 7%;
+    right: 7%;
+    outline: none;
+}
+
+h1 {
+    font-size: 2rem;
+    position: absolute;
+    top: 3vh;
+    left: 50vw;
+    transform: translateX(-50%);
+}
+
+button {
+    font-size: 1.7rem;
+    border-radius: 0.5rem;
+    border-width: 0.3rem;
+    background-color: aquamarine;
+    position: absolute;
+    padding: 0.3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    left: 80%;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: lightcyan;
+}
+
+.reset {
+    background-color: bisque;
+    top: 28%;
+}
+
+.f5 {
+    top: 35%;
+}
+
+.f4 {
+    top: 40%;
+}
+
+.f3 {
+    top: 45%;
+}
+
+.f2 {
+    top: 50%;
+}
+
+.f1 {
+    top: 55%;
+}
