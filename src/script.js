@@ -1,11 +1,11 @@
-import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
-import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
-import { MeshLine, MeshLineMaterial, MeshLineRaycast } from 'three.meshline';
+import * as THREE from '/@fs/Users/omarkhan/Documents/ICT-Explorer/node_modules/.vite/deps/three.js?v=69ff4c60'
+import { OrbitControls } from '/@fs/Users/omarkhan/Documents/ICT-Explorer/node_modules/.vite/deps/three_examples_jsm_controls_OrbitControls__js.js?v=255280d3'
+import { GLTFLoader } from '/@fs/Users/omarkhan/Documents/ICT-Explorer/node_modules/.vite/deps/three_examples_jsm_loaders_GLTFLoader__js.js?v=a2bc84b1'
+import { ColladaLoader } from '/@fs/Users/omarkhan/Documents/ICT-Explorer/node_modules/.vite/deps/three_examples_jsm_loaders_ColladaLoader__js.js?v=b7c9ee0c'
+import __vite__cjsImport4_three_meshline from "/@fs/Users/omarkhan/Documents/ICT-Explorer/node_modules/.vite/deps/three__meshline.js?v=4df3f9f5"; const MeshLine = __vite__cjsImport4_three_meshline["MeshLine"]; const MeshLineMaterial = __vite__cjsImport4_three_meshline["MeshLineMaterial"]; const MeshLineRaycast = __vite__cjsImport4_three_meshline["MeshLineRaycast"];
 
-import * as dat from 'lil-gui'
-import { BufferGeometry } from 'three'
+import * as dat from '/@fs/Users/omarkhan/Documents/ICT-Explorer/node_modules/.vite/deps/lil-gui.js?v=6fdf5dfa'
+import { BufferGeometry } from '/@fs/Users/omarkhan/Documents/ICT-Explorer/node_modules/.vite/deps/three.js?v=69ff4c60'
 
 const floor5 = document.getElementsByClassName('f5')[0]
 const floor4 = document.getElementsByClassName('f4')[0]
@@ -13,6 +13,9 @@ const floor3 = document.getElementsByClassName('f3')[0]
 const floor2 = document.getElementsByClassName('f2')[0]
 const floor1 = document.getElementsByClassName('f1')[0]
 const reset = document.getElementsByClassName('reset')[0]
+const goto = document.getElementById('goto')
+
+let selectedFloor;
 
 
 /**
@@ -34,10 +37,17 @@ loader.load("/models/ICT/ICT_COLLADA.dae", function (result) {
     const meshes = result.scene.children[0].children
 
     for(const mesh of meshes) {
+        mesh.translateZ(-400)
+        mesh.translateX(-200)
+
         const geometry = mesh.geometry
         console.log(geometry)
         const edges = new THREE.EdgesGeometry(geometry)
         const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 100 }))
+
+        line.translateZ(-400)
+        line.translateX(-200)
+
         result.scene.add(line);
     }
 
@@ -53,33 +63,70 @@ scene.add(selected)
 selected.visible = false
 
 floor5.addEventListener('click', () => {
-    console.log('f5')
+    console.log('Selected floor is f5')
+    // goto.className = "goto-active"
+    goto.className = "goto-inactive"
+    goto.innerHTML = "Floor 5 inside view coming soon!"
+    selectedFloor = 5
     selected.visible = true
     selected.position.set(-11, 30, -8)
 })
 
 floor4.addEventListener('click', () => {
-    console.log('f4')
+    console.log('Selected floor is f4')
+    // goto.className = "goto-active"
+    goto.className = "goto-inactive"
+    goto.innerHTML = "Floor 4 inside view coming soon!"
+    selectedFloor = 4
     selected.visible = true
     selected.position.set(-11, 23, -8)
 })
 
 floor3.addEventListener('click', () => {
-    console.log('f3')
+    console.log('Selected floor is f3')
+    // goto.className = "goto-active"
+    goto.className = "goto-inactive"
+    goto.innerHTML = "Floor 3 inside view coming soon!"
+    selectedFloor = 3
     selected.visible = true
     selected.position.set(-11, 16, -8)
 })
 
 floor2.addEventListener('click', () => {
-    console.log('f2')
+    console.log('Selected floor is f2')
+    goto.className = "goto-active"
+    goto.innerHTML = "Click for inside view of floor 2!"
+    selectedFloor = 2
     selected.visible = true
     selected.position.set(-11, 9, -8)
 })
 
 floor1.addEventListener('click', () => {
-    console.log('f1')
+    console.log('Selected floor is f1')
+    // goto.className = "goto-active"
+    goto.className = "goto-inactive"
+    goto.innerHTML = "Floor 1 inside view coming soon!"
+    selectedFloor = 1
     selected.visible = true
     selected.position.set(-11, 2, -8)
+})
+
+goto.addEventListener('click', () => {
+    console.log('Going to floor ' + selectedFloor)
+    selected.visible = false
+    switch(selectedFloor) {
+        case 5:
+            break;
+        case 4:
+            break;
+        case 3:
+            break;
+        case 2:
+            window.location.href = "./f2.html";
+            break;
+        case 1:
+            break;
+    }
 })
 
 /**
@@ -142,8 +189,11 @@ controls.saveState()
 
 // Resets camera rotation + selected floor
 reset.addEventListener('click', () => {
+    goto.className = "goto-inactive"
+    selectedFloor = null
     controls.reset()
     selected.visible = false
+    console.log(scene)
 })
 
 /**

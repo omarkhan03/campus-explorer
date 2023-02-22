@@ -72,3 +72,20 @@ button:hover {
 .f1 {
     top: 55%;
 }
+
+.goto-inactive {
+    color:black;
+    position:absolute;
+    font-size: 1.7rem;
+    top: 62%;
+    left: 80%;
+}
+
+.goto-active {
+    cursor: pointer;
+    color:blue;
+    position:absolute;
+    font-size: 1.7rem;
+    top: 62%;
+    left: 80%;
+}
