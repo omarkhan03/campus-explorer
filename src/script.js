@@ -1,12 +1,9 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
-import { MeshLine, MeshLineMaterial, MeshLineRaycast } from 'three.meshline';
 
-import * as dat from 'lil-gui'
-import { BufferGeometry } from 'three'
-
+const floor7 = document.getElementsByClassName('f7')[0]
+const floor6 = document.getElementsByClassName('f6')[0]
 const floor5 = document.getElementsByClassName('f5')[0]
 const floor4 = document.getElementsByClassName('f4')[0]
 const floor3 = document.getElementsByClassName('f3')[0]
@@ -16,13 +13,6 @@ const reset = document.getElementsByClassName('reset')[0]
 const goto = document.getElementById('goto')
 
 let selectedFloor;
-
-
-/**
- * Base
- */
-// Debug
-const gui = new dat.GUI()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -58,8 +48,29 @@ loader.load("/models/ICT/ICT_COLLADA.dae", function (result) {
 const geometry = new THREE.BoxGeometry(130,5,70)
 const material = new THREE.MeshBasicMaterial({ color: 0x0000ff, opacity: 0.2, transparent: true})
 const selected = new THREE.Mesh(geometry, material)
+material.depthWrite = false;
 scene.add(selected)
 selected.visible = false
+
+floor7.addEventListener('click', () => { 
+    console.log('Selected floor is f7')
+    // goto.className = "goto-active"
+    goto.className = "goto-inactive"
+    goto.innerHTML = "Floor 7 inside view coming soon!"
+    selectedFloor = 7
+    selected.visible = true
+    selected.position.set(-11, 19, -8)
+})
+
+floor6.addEventListener('click', () => { 
+    console.log('Selected floor is f6')
+    // goto.className = "goto-active"
+    goto.className = "goto-inactive"
+    goto.innerHTML = "Floor 6 inside view coming soon!"
+    selectedFloor = 6
+    selected.visible = true
+    selected.position.set(-11, 15, -8)
+})
 
 floor5.addEventListener('click', () => {
     console.log('Selected floor is f5')
@@ -68,7 +79,7 @@ floor5.addEventListener('click', () => {
     goto.innerHTML = "Floor 5 inside view coming soon!"
     selectedFloor = 5
     selected.visible = true
-    selected.position.set(-11, 19, -8)
+    selected.position.set(-11, 11, -8)
 })
 
 floor4.addEventListener('click', () => {
@@ -78,7 +89,7 @@ floor4.addEventListener('click', () => {
     goto.innerHTML = "Floor 4 inside view coming soon!"
     selectedFloor = 4
     selected.visible = true
-    selected.position.set(-11, 13, -8)
+    selected.position.set(-11, 7, -8)
 })
 
 floor3.addEventListener('click', () => {
@@ -88,7 +99,7 @@ floor3.addEventListener('click', () => {
     goto.innerHTML = "Floor 3 inside view coming soon!"
     selectedFloor = 3
     selected.visible = true
-    selected.position.set(-11, 16, -8)
+    selected.position.set(-11, 3, -8)
 })
 
 floor2.addEventListener('click', () => {
@@ -97,7 +108,7 @@ floor2.addEventListener('click', () => {
     goto.innerHTML = "Click for inside view of floor 2!"
     selectedFloor = 2
     selected.visible = true
-    selected.position.set(-11, 9, -8)
+    selected.position.set(-11, -1, -8)
 })
 
 floor1.addEventListener('click', () => {
@@ -107,7 +118,9 @@ floor1.addEventListener('click', () => {
     goto.innerHTML = "Floor 1 inside view coming soon!"
     selectedFloor = 1
     selected.visible = true
-    selected.position.set(-11, 2, -8)
+    selected.position.set(-11, -5, -8)
+    // selected.scale.set(1, 1.5, 1)
+
 })
 
 goto.addEventListener('click', () => {
