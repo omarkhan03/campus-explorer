@@ -17,6 +17,8 @@ body
 
 .webgl
 {
+    width: 100vw;
+    height: 100vh;
     position: fixed;
     outline: none;
 }
@@ -53,7 +55,15 @@ button:hover {
 
 .reset {
     background-color: bisque;
-    top: 28%;
+    top: 18%;
+}
+
+.f7 {
+    top: 25%;
+}
+
+.f6 {
+    top: 30%;
 }
 
 .f5 {

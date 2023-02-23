@@ -1,11 +1,11 @@
-import * as THREE from '/@fs/Users/omarkhan/Documents/ICT-Explorer/node_modules/.vite/deps/three.js?v=69ff4c60'
-import { OrbitControls } from '/@fs/Users/omarkhan/Documents/ICT-Explorer/node_modules/.vite/deps/three_examples_jsm_controls_OrbitControls__js.js?v=255280d3'
-import { GLTFLoader } from '/@fs/Users/omarkhan/Documents/ICT-Explorer/node_modules/.vite/deps/three_examples_jsm_loaders_GLTFLoader__js.js?v=a2bc84b1'
-import { ColladaLoader } from '/@fs/Users/omarkhan/Documents/ICT-Explorer/node_modules/.vite/deps/three_examples_jsm_loaders_ColladaLoader__js.js?v=b7c9ee0c'
-import __vite__cjsImport4_three_meshline from "/@fs/Users/omarkhan/Documents/ICT-Explorer/node_modules/.vite/deps/three__meshline.js?v=4df3f9f5"; const MeshLine = __vite__cjsImport4_three_meshline["MeshLine"]; const MeshLineMaterial = __vite__cjsImport4_three_meshline["MeshLineMaterial"]; const MeshLineRaycast = __vite__cjsImport4_three_meshline["MeshLineRaycast"];
+import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
+import { MeshLine, MeshLineMaterial, MeshLineRaycast } from 'three.meshline';
 
-import * as dat from '/@fs/Users/omarkhan/Documents/ICT-Explorer/node_modules/.vite/deps/lil-gui.js?v=6fdf5dfa'
-import { BufferGeometry } from '/@fs/Users/omarkhan/Documents/ICT-Explorer/node_modules/.vite/deps/three.js?v=69ff4c60'
+import * as dat from 'lil-gui'
+import { BufferGeometry } from 'three'
 
 const floor5 = document.getElementsByClassName('f5')[0]
 const floor4 = document.getElementsByClassName('f4')[0]
@@ -58,7 +58,6 @@ loader.load("/models/ICT/ICT_COLLADA.dae", function (result) {
 const geometry = new THREE.BoxGeometry(130,5,70)
 const material = new THREE.MeshBasicMaterial({ color: 0x0000ff, opacity: 0.2, transparent: true})
 const selected = new THREE.Mesh(geometry, material)
-selected.position.set(-11, 9, -8)
 scene.add(selected)
 selected.visible = false
 
@@ -69,7 +68,7 @@ floor5.addEventListener('click', () => {
     goto.innerHTML = "Floor 5 inside view coming soon!"
     selectedFloor = 5
     selected.visible = true
-    selected.position.set(-11, 30, -8)
+    selected.position.set(-11, 19, -8)
 })
 
 floor4.addEventListener('click', () => {
@@ -79,7 +78,7 @@ floor4.addEventListener('click', () => {
     goto.innerHTML = "Floor 4 inside view coming soon!"
     selectedFloor = 4
     selected.visible = true
-    selected.position.set(-11, 23, -8)
+    selected.position.set(-11, 13, -8)
 })
 
 floor3.addEventListener('click', () => {
