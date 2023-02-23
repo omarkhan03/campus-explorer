@@ -55,11 +55,13 @@ selected.visible = false
 function disableGoto() {
     goto.className = "goto-inactive"
     selected.material = new THREE.MeshBasicMaterial({ color: "green", opacity: 0.2, transparent: true})
+    material.depthWrite = false;
 }
 
 function enableGoto() {
     goto.className = "goto-active"
     selected.material = new THREE.MeshBasicMaterial({ color: "dodgerblue", opacity: 0.4, transparent: true})
+    material.depthWrite = false;
 }
 
 floor7.addEventListener('click', () => { 

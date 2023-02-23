@@ -37,7 +37,7 @@ h1 a {
 }
 
 button {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     border-radius: 0.5rem;
     border-width: 0.3rem;
     background-color: aquamarine;
@@ -63,27 +63,27 @@ button:hover {
 }
 
 .f6 {
-    top: 35%;
+    top: 37%;
 }
 
 .f5 {
-    top: 40%;
+    top: 44%;
 }
 
 .f4 {
-    top: 45%;
+    top: 51%;
 }
 
 .f3 {
-    top: 50%;
+    top: 58%;
 }
 
 .f2 {
-    top: 55%;
+    top: 65%;
 }
 
 .f1 {
-    top: 60%;
+    top: 72%;
 }
 
 .goto-inactive {
