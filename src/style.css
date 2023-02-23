@@ -54,44 +54,45 @@ button:hover {
 }
 
 .reset {
-    background-color: bisque;
-    top: 18%;
+    background-color: #ffe4c4;
+    top: 23%;
 }
 
 .f7 {
-    top: 25%;
-}
-
-.f6 {
     top: 30%;
 }
 
-.f5 {
+.f6 {
     top: 35%;
 }
 
-.f4 {
+.f5 {
     top: 40%;
 }
 
-.f3 {
+.f4 {
     top: 45%;
 }
 
-.f2 {
+.f3 {
     top: 50%;
 }
 
-.f1 {
+.f2 {
     top: 55%;
+}
+
+.f1 {
+    top: 60%;
 }
 
 .goto-inactive {
     color:black;
     position:absolute;
     font-size: 1.7rem;
-    top: 62%;
-    left: 80%;
+    top: 10vh;
+    left: 50vw;
+    transform: translateX(-50%);
 }
 
 .goto-active {
@@ -99,8 +100,9 @@ button:hover {
     color:blue;
     position:absolute;
     font-size: 1.7rem;
-    top: 62%;
-    left: 80%;
+    top: 10vh;
+    left: 50vw;
+    transform: translateX(-50%);
 }
 
 iframe {

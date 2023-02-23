@@ -46,16 +46,24 @@ loader.load("/models/ICT/ICT_COLLADA.dae", function (result) {
 
 // Selected floor
 const geometry = new THREE.BoxGeometry(130,5,70)
-const material = new THREE.MeshBasicMaterial({ color: 0x0000ff, opacity: 0.2, transparent: true})
+const material = new THREE.MeshBasicMaterial({ color: "green", opacity: 0.2, transparent: true})
 const selected = new THREE.Mesh(geometry, material)
 material.depthWrite = false;
 scene.add(selected)
 selected.visible = false
 
-floor7.addEventListener('click', () => { 
-    console.log('Selected floor is f7')
-    // goto.className = "goto-active"
+function disableGoto() {
     goto.className = "goto-inactive"
+    selected.material = new THREE.MeshBasicMaterial({ color: "green", opacity: 0.2, transparent: true})
+}
+
+function enableGoto() {
+    goto.className = "goto-active"
+    selected.material = new THREE.MeshBasicMaterial({ color: "dodgerblue", opacity: 0.4, transparent: true})
+}
+
+floor7.addEventListener('click', () => { 
+    disableGoto()
     goto.innerHTML = "Floor 7 inside view coming soon!"
     selectedFloor = 7
     selected.visible = true
@@ -63,9 +71,7 @@ floor7.addEventListener('click', () => {
 })
 
 floor6.addEventListener('click', () => { 
-    console.log('Selected floor is f6')
-    // goto.className = "goto-active"
-    goto.className = "goto-inactive"
+    disableGoto()
     goto.innerHTML = "Floor 6 inside view coming soon!"
     selectedFloor = 6
     selected.visible = true
@@ -73,9 +79,7 @@ floor6.addEventListener('click', () => {
 })
 
 floor5.addEventListener('click', () => {
-    console.log('Selected floor is f5')
-    // goto.className = "goto-active"
-    goto.className = "goto-inactive"
+    disableGoto()
     goto.innerHTML = "Floor 5 inside view coming soon!"
     selectedFloor = 5
     selected.visible = true
@@ -83,9 +87,7 @@ floor5.addEventListener('click', () => {
 })
 
 floor4.addEventListener('click', () => {
-    console.log('Selected floor is f4')
-    // goto.className = "goto-active"
-    goto.className = "goto-inactive"
+    disableGoto()
     goto.innerHTML = "Floor 4 inside view coming soon!"
     selectedFloor = 4
     selected.visible = true
@@ -93,9 +95,7 @@ floor4.addEventListener('click', () => {
 })
 
 floor3.addEventListener('click', () => {
-    console.log('Selected floor is f3')
-    // goto.className = "goto-active"
-    goto.className = "goto-inactive"
+    disableGoto()
     goto.innerHTML = "Floor 3 inside view coming soon!"
     selectedFloor = 3
     selected.visible = true
@@ -103,18 +103,15 @@ floor3.addEventListener('click', () => {
 })
 
 floor2.addEventListener('click', () => {
-    console.log('Selected floor is f2')
-    goto.className = "goto-active"
-    goto.innerHTML = "Click for inside view of floor 2!"
+    enableGoto()
+    goto.innerHTML = "Click for inside view of floor 2! -->"
     selectedFloor = 2
     selected.visible = true
     selected.position.set(-11, -2, -8)
 })
 
 floor1.addEventListener('click', () => {
-    console.log('Selected floor is f1')
-    // goto.className = "goto-active"
-    goto.className = "goto-inactive"
+    disableGoto()
     goto.innerHTML = "Floor 1 inside view coming soon!"
     selectedFloor = 1
     selected.visible = true
