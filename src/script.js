@@ -131,7 +131,7 @@ goto.addEventListener('click', () => {
         case 3:
             break;
         case 2:
-            window.location.href = "./f2.html";
+            window.location.assign("./f2.html")
             break;
         case 1:
             break;
