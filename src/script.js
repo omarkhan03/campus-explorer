@@ -108,7 +108,7 @@ floor2.addEventListener('click', () => {
     goto.innerHTML = "Click for inside view of floor 2!"
     selectedFloor = 2
     selected.visible = true
-    selected.position.set(-11, -1, -8)
+    selected.position.set(-11, -2, -8)
 })
 
 floor1.addEventListener('click', () => {
@@ -118,9 +118,7 @@ floor1.addEventListener('click', () => {
     goto.innerHTML = "Floor 1 inside view coming soon!"
     selectedFloor = 1
     selected.visible = true
-    selected.position.set(-11, -5, -8)
-    // selected.scale.set(1, 1.5, 1)
-
+    selected.position.set(-11, -8, -8)
 })
 
 goto.addEventListener('click', () => {
