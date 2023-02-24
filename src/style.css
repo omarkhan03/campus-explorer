@@ -105,7 +105,16 @@ button:hover {
     transform: translateX(-50%);
 }
 
-iframe {
+.active {
+    visibility: visible;
     width: 100vw;
     height: 100vh;
+    z-index: 1000;
+}
+
+.inactive {
+    visibility: hidden;
+    z-index: -100;
+    width: 0;
+    height: 0;
 }

@@ -12,6 +12,9 @@ const floor1 = document.getElementsByClassName('f1')[0]
 const reset = document.getElementsByClassName('reset')[0]
 const goto = document.getElementById('goto')
 
+// Really crappy, hacky way of doing this. I need to fix this.
+const matterportFrame = document.getElementById('matterport')
+
 let selectedFloor;
 
 // Canvas
@@ -139,12 +142,25 @@ goto.addEventListener('click', () => {
         case 3:
             break;
         case 2:
-            window.location.assign("/f2.html")
+            activateMatterport()
             break;
         case 1:
             break;
     }
 })
+
+function activateMatterport (){
+    matterportFrame.className = "active"
+    floor1.className = "inactive"
+    floor2.className = "inactive"
+    floor3.className = "inactive"
+    floor4.className = "inactive"
+    floor5.className = "inactive"
+    floor6.className = "inactive"
+    floor7.className = "inactive"
+    reset.className = "inactive"
+    goto.innerHTML = "Return to outside view"
+}
 
 /**
  * Lights
