@@ -2,6 +2,14 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
 import window from 'global'
+import url from 'url'
+
+function getFormattedUrl(req) {
+    return url.format({
+        protocol: req.protocol,
+        host: req.get('./f2.html')
+    });
+}
 
 const floor7 = document.getElementsByClassName('f7')[0]
 const floor6 = document.getElementsByClassName('f6')[0]
@@ -32,14 +40,22 @@ loader.load("/models/ICT/ICT_COLLADA.dae", function (result) {
         mesh.translateX(-200)
 
         const geometry = mesh.geometry
-        console.log(geometry)
-        const edges = new THREE.EdgesGeometry(geometry)
-        const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 100 }))
 
-        line.translateZ(-400)
-        line.translateX(-200)
+        try {
+            mesh.material["depthTest"] = true;
+        } catch (e) {
+            console.log(e)
+        } finally {
+            const edges = new THREE.EdgesGeometry(geometry)
+            const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 100 }))
+    
+            line.translateZ(-400)
+            line.translateX(-200)
+    
+            result.scene.add(line);
+        }
 
-        result.scene.add(line);
+
     }
 
     scene.add(result.scene);
@@ -49,20 +65,20 @@ loader.load("/models/ICT/ICT_COLLADA.dae", function (result) {
 const geometry = new THREE.BoxGeometry(130,5,70)
 const material = new THREE.MeshBasicMaterial({ color: "green", opacity: 0.2, transparent: true})
 const selected = new THREE.Mesh(geometry, material)
-material.depthWrite = false;
+selected.material.depthWrite = false;
 scene.add(selected)
 selected.visible = false
 
 function disableGoto() {
     goto.className = "goto-inactive"
     selected.material = new THREE.MeshBasicMaterial({ color: "green", opacity: 0.2, transparent: true})
-    material.depthWrite = false;
+    selected.material.depthWrite = false;
 }
 
 function enableGoto() {
     goto.className = "goto-active"
     selected.material = new THREE.MeshBasicMaterial({ color: "dodgerblue", opacity: 0.4, transparent: true})
-    material.depthWrite = false;
+    selected.material.depthWrite = false;
 }
 
 floor7.addEventListener('click', () => { 
@@ -133,6 +149,9 @@ goto.addEventListener('click', () => {
             break;
         case 2:
             window.location.assign("./f2.html")
+
+            
+            // res.redirect(getFormattedUrl(req));
             break;
         case 1:
             break;
