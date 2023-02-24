@@ -140,9 +140,6 @@ goto.addEventListener('click', () => {
             break;
         case 2:
             window.location.assign("/f2.html")
-
-            // res.redirect('/f2.html');
-            // res.redirect(getFormattedUrl(req));
             break;
         case 1:
             break;
