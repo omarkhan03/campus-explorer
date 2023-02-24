@@ -14,6 +14,7 @@ const goto = document.getElementById('goto')
 
 // Really crappy, hacky way of doing this. I need to fix this.
 const matterportFrame = document.getElementById('matterport')
+const header = document.getElementById('header')
 
 let selectedFloor;
 
@@ -132,22 +133,28 @@ floor1.addEventListener('click', () => {
 })
 
 goto.addEventListener('click', () => {
-    console.log('Going to floor ' + selectedFloor)
-    selected.visible = false
-    switch(selectedFloor) {
-        case 5:
-            break;
-        case 4:
-            break;
-        case 3:
-            break;
-        case 2:
-            activateMatterport()
-            break;
-        case 1:
-            break;
+    if (goto.className == "goto-back") {
+        location.reload()
+
+    } else {
+        console.log('Going to floor ' + selectedFloor)
+        selected.visible = false
+        switch(selectedFloor) {
+            case 5:
+                break;
+            case 4:
+                break;
+            case 3:
+                break;
+            case 2:
+                activateMatterport()
+                break;
+            case 1:
+                break;
+        }
     }
-})
+    })
+
 
 function activateMatterport (){
     matterportFrame.className = "active"
@@ -159,7 +166,9 @@ function activateMatterport (){
     floor6.className = "inactive"
     floor7.className = "inactive"
     reset.className = "inactive"
-    goto.innerHTML = "Return to outside view"
+    header.className = "inactive"
+    goto.className = "goto-back"
+    goto.innerHTML = "<-- Return to outside view"
 }
 
 /**

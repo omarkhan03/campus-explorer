@@ -105,6 +105,19 @@ button:hover {
     transform: translateX(-50%);
 }
 
+.goto-back {
+    padding: 1rem;
+    cursor: pointer;
+    background-color: #ffe4c4;
+    color:black;
+    position:absolute;
+    font-size: 1.7rem;
+    top: 5vh;
+    left: 50vw;
+    transform: translateX(-50%);
+}
+
+
 .active {
     visibility: visible;
     width: 100vw;
