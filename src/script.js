@@ -2,6 +2,9 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
 
+// Media query for mobile
+var x = window.matchMedia("(max-width: 30em)")
+
 const floor7 = document.getElementsByClassName('f7')[0]
 const floor6 = document.getElementsByClassName('f6')[0]
 const floor5 = document.getElementsByClassName('f5')[0]
@@ -30,27 +33,19 @@ loader.load("/models/ICT/ICT_COLLADA.dae", function (result) {
 
     const meshes = result.scene.children[0].children
 
+    // Adds outline to each mesh
     for(const mesh of meshes) {
         mesh.translateZ(-400)
         mesh.translateX(-200)
 
         const geometry = mesh.geometry
-
-        try {
-            mesh.material["depthTest"] = true;
-        } catch (e) {
-            console.log(e)
-        } finally {
-            const edges = new THREE.EdgesGeometry(geometry)
-            const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 100 }))
+        const edges = new THREE.EdgesGeometry(geometry)
+        const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 1 }))
     
-            line.translateZ(-400)
-            line.translateX(-200)
+        line.translateZ(-400)
+        line.translateX(-200)
     
-            result.scene.add(line);
-        }
-
-
+        result.scene.add(line);
     }
 
     scene.add(result.scene);
@@ -130,6 +125,7 @@ floor1.addEventListener('click', () => {
     selectedFloor = 1
     selected.visible = true
     selected.position.set(-11, -8, -8)
+    console.log(camera.position)
 })
 
 goto.addEventListener('click', () => {
@@ -155,7 +151,7 @@ goto.addEventListener('click', () => {
     }
     })
 
-
+// This literally hides everything except for the matterport iframe
 function activateMatterport (){
     matterportFrame.className = "active"
     floor1.className = "inactive"
@@ -216,9 +212,13 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000000)
+camera.rotation.set(-0.06, -0.76, 0.04)
 camera.position.set(-78.6, 32, 45)
 
-camera.rotation.set(-0.06, -0.76, 0.04)
+if (x.matches) {
+    // If media query matches
+    camera.position.set(-120, 35, 140)
+}
 
 scene.add(camera)
 
