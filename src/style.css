@@ -31,9 +31,12 @@ h1 {
     transform: translateX(-50%);
 }   
 
-h1 a {
-    margin-left: 1rem;
+a {
     font-size: 1.2rem;
+    position: absolute;
+    top: 7vh;
+    left: 50vw;
+    transform: translateX(-50%);
 }
 
 button {
@@ -90,7 +93,7 @@ button:hover {
     color:black;
     position:absolute;
     font-size: 1.7rem;
-    top: 10vh;
+    top: 12vh;
     left: 50vw;
     transform: translateX(-50%);
 }
@@ -100,7 +103,7 @@ button:hover {
     color:blue;
     position:absolute;
     font-size: 1.7rem;
-    top: 10vh;
+    top: 12vh;
     left: 50vw;
     transform: translateX(-50%);
 }
@@ -134,15 +137,14 @@ button:hover {
 
 @media (max-width: 30em) {
     .webgl {
-        transform:translateY(10%);
-        
-        
+        transform:translateY(10%);   
     }
     h1 {
         font-size: 1rem;
-        width: 80vw;
+        text-align: center;
+        width: 100vw;
     }
-    h1 a {
+    a {
         font-size: 0.8rem;
     }
     button {
@@ -159,42 +161,42 @@ button:hover {
     }
 
     .reset {
-        top: 16%;
+        top: 20%;
         left: 3vw;
     }
     
     .f7 {
-        top: 16%;
+        top: 20%;
         left: 27vw;
     }
 
     .f6 {
-        top: 16%;
+        top: 20%;
         left: 54vw;
     }
     
     .f5 {
-        top: 16%;
+        top: 20%;
         left: 78vw;
     }
     
     .f4 {
-        top: 22%;
+        top: 28%;
         left: 3vw;
     }
     
     .f3 {
-        top: 22%;
+        top: 28%;
         left: 27vw;
     }
     
     .f2 {
-        top: 22%;
+        top: 28%;
         left: 54vw;
     }
     
     .f1 {
-        top: 22%;
+        top: 28%;
         left: 78vw;
     }
 }
