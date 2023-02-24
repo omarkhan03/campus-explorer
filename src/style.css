@@ -66,27 +66,27 @@ button:hover {
 }
 
 .f6 {
-    top: 37%;
+    top: 36%;
 }
 
 .f5 {
-    top: 44%;
+    top: 42%;
 }
 
 .f4 {
-    top: 51%;
+    top: 48%;
 }
 
 .f3 {
-    top: 58%;
+    top: 54%;
 }
 
 .f2 {
-    top: 65%;
+    top: 60%;
 }
 
 .f1 {
-    top: 72%;
+    top: 66%;
 }
 
 .goto-inactive {
@@ -161,22 +161,22 @@ button:hover {
     }
 
     .reset {
-        top: 20%;
+        top: 22%;
         left: 3vw;
     }
     
     .f7 {
-        top: 20%;
+        top: 22%;
         left: 27vw;
     }
 
     .f6 {
-        top: 20%;
+        top: 22%;
         left: 54vw;
     }
     
     .f5 {
-        top: 20%;
+        top: 22%;
         left: 78vw;
     }
     
