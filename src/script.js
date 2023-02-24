@@ -1,15 +1,6 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
-import window from 'global'
-import url from 'url'
-
-function getFormattedUrl(req) {
-    return url.format({
-        protocol: req.protocol,
-        host: req.get('./f2.html')
-    });
-}
 
 const floor7 = document.getElementsByClassName('f7')[0]
 const floor6 = document.getElementsByClassName('f6')[0]
@@ -148,9 +139,9 @@ goto.addEventListener('click', () => {
         case 3:
             break;
         case 2:
-            window.location.assign("./f2.html")
+            window.location.assign("/f2.html")
 
-            
+            // res.redirect('/f2.html');
             // res.redirect(getFormattedUrl(req));
             break;
         case 1:
