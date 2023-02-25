@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICT Explorer + Room Finder</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <iframe id="matterport" class="inactive" src='https://my.matterport.com/show/?m=zpj8DPo9Qcv' 
+        frameborder='0' allowfullscreen allow='xr-spatial-tracking' sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+    </iframe>
+
+    <canvas class="webgl"></canvas>
+    <h1 id="header">ICT Explorer + Room Finder</h1>
+    <a target="_blank" href="https://github.com/omarkhan03/ICT-Explorer">Source code</a> 
+    <button class="reset">Reset</button>
+    <button class="f7">Floor 7</button>
+    <button class="f6">Floor 6</button>
+    <button class="f5">Floor 5</button>
+    <button class="f4">Floor 4</button>
+    <button class="f3">Floor 3</button>
+    <button class="f2">Floor 2</button>
+    <button class="f1">Floor 1</button>
+    <p id="goto" class="goto-inactive">Select a floor</p>
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
