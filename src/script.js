@@ -176,6 +176,7 @@ function activateMatterport (){
 // This shows everything except for the matterport iframe
 function deativateMatterport (){
     matterportFrame.className = "inactive"
+    selectedFloor = null;
     floor1.className = "f1"
     floor2.className = "f2"
     floor3.className = "f3"
