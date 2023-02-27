@@ -15,6 +15,8 @@ const floor1 = document.getElementsByClassName('f1')[0]
 const reset = document.getElementsByClassName('reset')[0]
 const goto = document.getElementById('goto')
 
+var state = 0;
+
 // Really crappy, hacky way of doing this. I need to fix this.
 const matterportFrame = document.getElementById('matterport')
 const header = document.getElementById('header')
@@ -129,10 +131,12 @@ floor1.addEventListener('click', () => {
 })
 
 goto.addEventListener('click', () => {
-    if (goto.className == "goto-back") {
-        location.reload()
+    if (state == 1) {
+        state = 0;
+        deativateMatterport()
 
     } else {
+        state = 1;
         console.log('Going to floor ' + selectedFloor)
         selected.visible = false
         switch(selectedFloor) {
@@ -151,7 +155,7 @@ goto.addEventListener('click', () => {
     }
     })
 
-// This literally hides everything except for the matterport iframe
+// This hides everything except for the matterport iframe
 function activateMatterport (){
     matterportFrame.className = "active"
     floor1.className = "inactive"
@@ -165,6 +169,22 @@ function activateMatterport (){
     header.className = "inactive"
     goto.className = "goto-back"
     goto.innerHTML = "<-- Return to outside view"
+}
+
+// This shows everything except for the matterport iframe
+function deativateMatterport (){
+    matterportFrame.className = "inactive"
+    floor1.className = "f1"
+    floor2.className = "f2"
+    floor3.className = "f3"
+    floor4.className = "f4"
+    floor5.className = "f5"
+    floor6.className = "f6"
+    floor7.className = "f7"
+    reset.className = "reset"
+    header.className = ""
+    goto.className = "goto-inactive"
+    goto.innerHTML = "Click on a floor to go inside!"
 }
 
 /**
