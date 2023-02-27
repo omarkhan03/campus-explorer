@@ -109,15 +109,23 @@ button:hover {
 }
 
 .goto-back {
-    padding: 1rem;
+    padding-top: 1.4rem;
+    padding-bottom: 0.7rem;
     cursor: pointer;
-    background-color: #ffe4c4;
-    color:black;
+    background-color: black;
+    color:white;
     position:absolute;
-    font-size: 1.7rem;
-    top: 5vh;
+    font-size: 1.5rem;
+    text-align: center;
+
+    border-radius: 0 0 2rem 2rem;
+
     left: 50vw;
     transform: translateX(-50%);
+
+    top: 0vh;
+    width: 40vw;
+    height: 5vh;
 }
 
 
@@ -154,7 +162,7 @@ button:hover {
         padding-right: 0.6rem;
     }
 
-    .goto-active, .goto-inactive, .goto-back {
+    .goto-active, .goto-inactive {
         width: 80vw;
         font-size: 1.2rem;
         text-align: center;
@@ -198,5 +206,25 @@ button:hover {
     .f1 {
         top: 28%;
         left: 78vw;
+    }
+
+    .goto-back {
+        padding-top: 1.4rem;
+        padding-bottom: 0.7rem;
+        cursor: pointer;
+        background-color: black;
+        color:white;
+        position:absolute;
+        font-size: 1.5rem;
+        text-align: center;
+    
+        border-radius: 0 0 2rem 2rem;
+    
+        left: 50vw;
+        transform: translateX(-50%);
+    
+        top: 0vh;
+        width: 100vw;
+        height: 5vh;
     }
 }

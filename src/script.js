@@ -14,6 +14,7 @@ const floor2 = document.getElementsByClassName('f2')[0]
 const floor1 = document.getElementsByClassName('f1')[0]
 const reset = document.getElementsByClassName('reset')[0]
 const goto = document.getElementById('goto')
+const sourceCode = document.getElementById('source-code')
 
 var state = 0;
 
@@ -167,6 +168,7 @@ function activateMatterport (){
     floor7.className = "inactive"
     reset.className = "inactive"
     header.className = "inactive"
+    sourceCode.className = "inactive"
     goto.className = "goto-back"
     goto.innerHTML = "<-- Return to outside view"
 }
@@ -181,6 +183,7 @@ function deativateMatterport (){
     floor5.className = "f5"
     floor6.className = "f6"
     floor7.className = "f7"
+    sourceCode.className = ""
     reset.className = "reset"
     header.className = ""
     goto.className = "goto-inactive"
