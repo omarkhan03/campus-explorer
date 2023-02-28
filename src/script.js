@@ -16,6 +16,7 @@ const reset = document.getElementsByClassName('reset')[0]
 const goto = document.getElementById('goto')
 const sourceCode = document.getElementById('source-code')
 
+// State 0 is the external view, state 1 is the internal view
 var state = 0;
 
 // Really crappy, hacky way of doing this. I need to fix this.
