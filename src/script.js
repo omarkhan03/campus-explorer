@@ -123,8 +123,8 @@ floor2.addEventListener('click', () => {
 })
 
 floor1.addEventListener('click', () => {
-    disableGoto()
-    goto.innerHTML = "Floor 1 inside view coming soon!"
+    enableGoto()
+    goto.innerHTML = "Click for inside view of floor 1! -->"
     selectedFloor = 1
     selected.visible = true
     selected.position.set(-11, -8, -8)
@@ -151,6 +151,7 @@ goto.addEventListener('click', () => {
                 activateMatterport()
                 break;
             case 1:
+                activateMatterport()
                 break;
         }
     }
