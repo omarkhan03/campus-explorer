@@ -82,12 +82,12 @@ button:hover {
 }
 
 .f2 {
-    background-color: skyblue !important;
+    background-color: skyblue;
     top: 60%;
 }
 
 .f1 {
-    background-color: skyblue !important;
+    background-color: skyblue;
     top: 66%;
 }
 
@@ -201,13 +201,13 @@ button:hover {
     }
     
     .f2 {
-        background-color: skyblue !important;
+        background-color: skyblue;
         top: 28%;
         left: 54vw;
     }
     
     .f1 {
-        background-color: skyblue !important;
+        background-color: skyblue;
         top: 28%;
         left: 78vw;
     }
