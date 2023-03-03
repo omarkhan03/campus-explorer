@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
+import '@matterport/webcomponent'
 
 // Media query for mobile
 var x = window.matchMedia("(max-width: 30em)")
