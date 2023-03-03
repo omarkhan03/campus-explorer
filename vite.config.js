@@ -18,6 +18,9 @@ export default defineConfig({
                 main: resolve(__dirname, 'src/index.html'), 
                 nested: resolve(__dirname, 'src/bundle/index.html'),
             },
+            output: {
+                inlineDynamicImports: false,
+            },
         },
         outDir: '../dist',
         emptyOutDir: true,
