@@ -1,4 +1,6 @@
 const isCodeSandbox = 'SANDBOX_URL' in process.env || 'CODESANDBOX_HOST' in process.env
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
 
 export default {
     root: 'src/',
@@ -11,8 +13,26 @@ export default {
     },
     build:
     {
+        rollupOptions: {
+            input: {
+                main: resolve(__dirname, 'src/index.html'), 
+                nested: resolve(__dirname, 'src/bundle/showcase.html'),
+            },
+        },
         outDir: '../dist',
         emptyOutDir: true,
         sourcemap: true
     }
 }
+
+
+// export default defineConfig({
+//   build: {
+//     rollupOptions: {
+//       input: {
+//         main: resolve(__dirname, 'src/index.html'), 
+//         nested: resolve(__dirname, 'src/bundle/showcase.html'),
+//       },
+//     },
+//   },
+// })
