@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <iframe id="matterport" class="inactive" src='https://my.matterport.com/show/?m=BQNa4ykRzUQ&play=1&qs=1' frameborder='0' allowfullscreen allow='xr-spatial-tracking' 
+    <!-- <iframe id="matterport" class="inactive" src='https://my.matterport.com/show/?m=BQNa4ykRzUQ&play=1&qs=1' frameborder='0' allowfullscreen allow='xr-spatial-tracking' 
     sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
-    </iframe>
+    </iframe> -->
+
+    <iframe id="matterport" class="inactive" width="740" height="480" src="./bundle/showcase.html?m=BQNa4ykRzUQ&applicationKey=tchcny4w75fpm678pxw3sndbc&play=1&qs=1" frameborder=”0” allowfullscreen allow="vr"></iframe>
 
     <canvas class="webgl"></canvas>
     <h1 id="header">ICT Explorer + Room Finder</h1>
@@ -25,5 +27,21 @@
     <p id="goto" class="goto-inactive">Select a floor</p>
 
     <script type="module" src="./script.js"></script>
+    <script>
+        const showcase = document.getElementById('matterport');
+            const showcaseWindow = showcase.contentWindow;
+            showcase.addEventListener('load', async function() {
+            let mpSdk;
+            try {
+                mpSdk = await showcaseWindow.MP_SDK.connect(showcaseWindow);
+            }
+            catch(e) {
+                console.error(e);
+                return;
+            }
+
+            console.log('Hello Bundle SDK', mpSdk);
+            });
+    </script>
 </body>
 </html>
