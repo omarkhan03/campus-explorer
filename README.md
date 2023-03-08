@@ -1,6 +1,6 @@
 # Campus XR
 
-## ICT Explorer and Room-Finder
+## [ICT Explorer and Room-Finder](https://ict-explorer.vercel.app)
 A web-app that allows users to explore the exterior and interior of the ICT building.
 
 To-do:
