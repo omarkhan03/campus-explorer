@@ -2,6 +2,12 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
 
+import { navToFloor } from './matterport';
+
+export let state = 0;
+export let selectedFloor;
+
+
 // Media query for mobile
 var x = window.matchMedia("(max-width: 30em)")
 
@@ -16,14 +22,10 @@ const reset = document.getElementsByClassName('reset')[0]
 const goto = document.getElementById('goto')
 const sourceCode = document.getElementById('source-code')
 
-// State 0 is the external view, state 1 is the internal view
-// export var state = 0;
-
 // Really crappy, hacky way of doing this. I need to fix this.
 const matterportFrame = document.getElementById('matterport')
 const header = document.getElementById('header')
 
-let selectedFloor;
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -173,6 +175,7 @@ function activateMatterport (){
     sourceCode.className = "inactive"
     goto.className = "goto-back"
     goto.innerHTML = "<-- Return to outside view"
+    navToFloor()
 }
 
 // This shows everything except for the matterport iframe

@@ -35,8 +35,6 @@
         const showcase = document.getElementById('matterport');
         const showcaseWindow = showcase.contentWindow;
         let connected = false;
-        let state = 0;
-
         let mpSdk;
         showcase.addEventListener('load', async function() {
             try {
@@ -46,13 +44,11 @@
                 console.error(e);
                 return;
             }
-
             connected = true;
             console.log('Hello Bundle SDK', mpSdk);
         });
-
-        
     </script>
+    
     <script type="module" src="./script.js"></script>
     <script type="module" src="./matterport.js"></script>
 </body>

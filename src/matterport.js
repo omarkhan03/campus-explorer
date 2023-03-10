@@ -1,26 +1,27 @@
-// import { state } from './script.js'
+import { state } from './script.js'
+import { selectedFloor } from './script.js'
 
 window.addEventListener('keydown', e=> {
     if (e.key == 'q' && state == 1) {
-        console.log(state)
-        console.log(mpSdk)
+        
     }
 })
-
-var targetObj = {};
-var targetProxy = new Proxy(targetObj, {
-  set: function (target, key, value) {
-      console.log(`${key} set to ${value}`);
-      target[key] = value;
-      return true;
-  }
-});
 
 function activate() {
     if(!connected) {
        window.setTimeout(activate, 100); /* this checks the flag every 100 milliseconds*/
     } else {
-        mpSdk.Room.data.subscribe({
+       createSources()
+    }
+}
+activate()
+
+export function navToFloor() {
+    mpSdk.Floor.moveTo(selectedFloor-1)
+}
+
+function createSources() {
+    mpSdk.Room.data.subscribe({
         onAdded: async function(index, item, collection) {
             console.log (item.center);
             console.log(item.size)
@@ -45,6 +46,4 @@ function activate() {
             sensor.showDebug(true);
             }
         })
-    }
 }
-activate()
