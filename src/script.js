@@ -1,7 +1,6 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
-import '@matterport/webcomponent'
 
 // Media query for mobile
 var x = window.matchMedia("(max-width: 30em)")
@@ -18,7 +17,7 @@ const goto = document.getElementById('goto')
 const sourceCode = document.getElementById('source-code')
 
 // State 0 is the external view, state 1 is the internal view
-var state = 0;
+// export var state = 0;
 
 // Really crappy, hacky way of doing this. I need to fix this.
 const matterportFrame = document.getElementById('matterport')

@@ -31,22 +31,12 @@
     <button class="f1">Floor 1</button>
     <p id="goto" class="goto-inactive">Select a floor</p>
 
-    <script type="module" src="./script.js"></script>
     <script>
         const showcase = document.getElementById('matterport');
-            const showcaseWindow = showcase.contentWindow;
-            showcase.addEventListener('load', async function() {
-            let mpSdk;
-            try {
-                mpSdk = await showcaseWindow.MP_SDK.connect(showcaseWindow);
-            }
-            catch(e) {
-                console.error(e);
-                return;
-            }
-
-            console.log('Hello Bundle SDK', mpSdk);
-            });
+        const showcaseWindow = showcase.contentWindow;
+        let state = 0;
     </script>
+    <script type="module" src="./script.js"></script>
+    <script src="./interior.js"></script>
 </body>
 </html>
