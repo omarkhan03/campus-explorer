@@ -190,6 +190,18 @@ button:hover {
         text-align: center;
     }
 
+    .error {
+        width: 80vw;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .switch {
+        font-size: 0.8rem;
+        top: 34%;
+        left: 37vw;
+    }
+
     .reset {
         top: 22%;
         left: 3vw;
