@@ -9,6 +9,7 @@ import { navToFloor } from './matterport';
 export let state = 0;
 export let selectedFloor;
 
+let rememberState = null;
 
 // Media query for mobile
 var x = window.matchMedia("(max-width: 30em)")
@@ -23,6 +24,7 @@ const floor1 = document.getElementsByClassName('f1')[0]
 const reset = document.getElementsByClassName('reset')[0]
 const switchView = document.getElementsByClassName('switch')[0]
 const goto = document.getElementById('goto')
+const error = document.getElementById('error')
 const sourceCode = document.getElementById('source-code')
 
 // Really crappy, hacky way of doing this. I need to fix this.
@@ -46,7 +48,7 @@ function clearScene() {
 }
 
 function loadICT() {
-    state = 0
+    // state = 0
     // clearScene()
     const ICTLoader = new ColladaLoader()
     ICTLoader.load("/models/ICT/ICT_COLLADA.dae", function (result) {
@@ -230,12 +232,11 @@ floor1.addEventListener('click', () => {
 })
 
 goto.addEventListener('click', () => {
-    if (state == 1) {
-        state = 0;
-        deativateMatterport()
+    if (state == 2) {
+        deactivateMatterport()
 
     } else {
-        state = 1;
+        state = 2;
         console.log('Going to floor ' + selectedFloor)
         selected.visible = false
         switch(selectedFloor) {
@@ -257,13 +258,18 @@ goto.addEventListener('click', () => {
 
 switchView.addEventListener('click', () => {
     if (state === 0) {
-        state = 1;
         scene.children[4].visible = false
         try {
             scene.children[5].visible = true
-        } catch (error) {
-            goto.innerHTML = "Satellite view not ready yet!"
-            state = 0
+
+            if (error.innerHTML != "") {
+                error.innerHTML = ""
+            }
+            state = 1;
+            switchView.innerHTML = "Switch to <br/> simplified view"
+
+        } catch (e) {
+            error.innerHTML = "Satellite view not ready yet! <br/> Try again in a few seconds."
             scene.children[4].visible = true
         }
     }
@@ -271,6 +277,7 @@ switchView.addEventListener('click', () => {
         state = 0;
         scene.children[4].visible = true
         scene.children[5].visible = false
+        switchView.innerHTML = "Switch to <br/> satellite view"
     }
 })
 
@@ -285,6 +292,8 @@ function activateMatterport (){
     floor6.className = "inactive"
     floor7.className = "inactive"
     reset.className = "inactive"
+    switchView.className = "inactive"
+    reset.className = "inactive"
     header.className = "inactive"
     sourceCode.className = "inactive"
     goto.className = "goto-back"
@@ -293,7 +302,11 @@ function activateMatterport (){
 }
 
 // This shows everything except for the matterport iframe
-function deativateMatterport (){
+function deactivateMatterport (){
+    state = 0;
+    scene.children[4].visible = true
+    scene.children[5].visible = false
+
     matterportFrame.className = "inactive"
     selectedFloor = null;
     floor1.className = "f1"
@@ -305,9 +318,11 @@ function deativateMatterport (){
     floor7.className = "f7"
     sourceCode.className = ""
     reset.className = "reset"
+    switchView.className = "switch"
+    reset.className = "reset"
     header.className = ""
     goto.className = "goto-inactive"
-    goto.innerHTML = "Click on a floor to go inside!"
+    goto.innerHTML = "Select a floor."
 }
 
 /**

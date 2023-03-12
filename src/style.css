@@ -56,6 +56,12 @@ button:hover {
     background-color: lightcyan;
 }
 
+.switch {
+    font-size: 1.2rem;
+    background-color: #ffe4c4;
+    top: 15%;
+}
+
 .reset {
     background-color: #ffe4c4;
     top: 23%;
@@ -130,6 +136,18 @@ button:hover {
     height: 5vh;
 
     z-index: 1000;
+}
+
+.error {
+    width: 30vw;
+    font-size: 1rem;
+    text-align: center;
+    color:darkred;
+    position:absolute;
+    font-size: 1.7rem;
+    top: 16vh;
+    left: 50vw;
+    transform: translateX(-50%);
 }
 
 
