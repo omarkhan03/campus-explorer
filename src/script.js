@@ -72,7 +72,7 @@ function loadICT() {
 
         var ICT = result.scene
 
-        ICT.position.set(-1000, -1320, -2400)
+        ICT.position.set(-1000, /*-1320*/-820, -2400)
         ICT.rotation.set(-Math.PI/2, 0, 353.45)
         ICT.scale.set(0.6,0.6,0.6)
 
@@ -105,7 +105,7 @@ function loadCampus() {
             campus.scale.set(10000,10000,10000)
             campus.translateX(21000)
             // campusScene.translateZ(50)
-            campus.translateY(-3700)
+            campus.translateY(-3200)
 
             scene.add( campus );
 
@@ -171,7 +171,7 @@ floor7.addEventListener('click', () => {
     selectedFloor = 7
     selected.visible = true
     // selected.position.set(-11, 19, -8)
-    selected.position.set(-1200, -600, -1900)
+    selected.position.set(-1200, -100, -1900)
 })
 
 floor6.addEventListener('click', () => { 
@@ -180,7 +180,7 @@ floor6.addEventListener('click', () => {
     selectedFloor = 6
     selected.visible = true
     // selected.position.set(-11, 15, -8)
-    selected.position.set(-1200, -710, -1900)
+    selected.position.set(-1200, -210, -1900)
 })
 
 floor5.addEventListener('click', () => {
@@ -189,7 +189,7 @@ floor5.addEventListener('click', () => {
     selectedFloor = 5
     selected.visible = true
     // selected.position.set(-11, 11, -8)
-    selected.position.set(-1200, -820, -1900)
+    selected.position.set(-1200, -320, -1900)
 })
 
 floor4.addEventListener('click', () => {
@@ -198,7 +198,7 @@ floor4.addEventListener('click', () => {
     selectedFloor = 4
     selected.visible = true
     // selected.position.set(-11, 7, -8)
-    selected.position.set(-1200, -930, -1900)
+    selected.position.set(-1200, -430, -1900)
 })
 
 floor3.addEventListener('click', () => {
@@ -209,7 +209,7 @@ floor3.addEventListener('click', () => {
     selectedFloor = 3
     selected.visible = true
     // selected.position.set(-11, 3, -8)
-    selected.position.set(-1200, -1040, -1900)
+    selected.position.set(-1200, -540, -1900)
 
 })
 
@@ -219,7 +219,7 @@ floor2.addEventListener('click', () => {
     selectedFloor = 2
     selected.visible = true
     // selected.position.set(-11, -2, -8)
-    selected.position.set(-1200, -1150, -1900)
+    selected.position.set(-1200, -650, -1900)
 })
 
 floor1.addEventListener('click', () => {
@@ -228,7 +228,7 @@ floor1.addEventListener('click', () => {
     selectedFloor = 1
     selected.visible = true
     // selected.position.set(-11, -8, -8)
-    selected.position.set(-1200, -1260, -1900)
+    selected.position.set(-1200, -760, -1900)
 })
 
 goto.addEventListener('click', () => {
@@ -373,8 +373,13 @@ const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 
 // camera.rotation.set(-0.06, -0.76, 0.04)
 // camera.position.set(-78.6, 32, 45)
 
-camera.position.set(-1084.87, 89.24, 1000)
-camera.rotation.set(-0.27, 0.03, 0.01)
+camera.position.set(1123, 136, 118)
+
+// {
+//     "x": 1123.4541089075633,
+//     "y": 136.86524637831755,
+//     "z": 118.82360488017002
+// }
 
 if (x.matches) {
     // If media query matches
