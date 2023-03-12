@@ -70,8 +70,8 @@ function loadICT() {
 
         var ICT = result.scene
 
-        ICT.position.set(-1400, -1320, -1500)
-        ICT.rotation.set(-Math.PI/2, 0, -Math.PI/2)
+        ICT.position.set(-1000, -1320, -2400)
+        ICT.rotation.set(-Math.PI/2, 0, 353.45)
         ICT.scale.set(0.6,0.6,0.6)
 
         scene.add(result.scene);
@@ -85,10 +85,10 @@ function loadCampus() {
     // Instantiate a loader
     const campusLoader = new GLTFLoader();
 
-    // Optional: Provide a DRACOLoader instance to decode compressed mesh data
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath( '/examples/jsm/libs/draco/' );
-    campusLoader.setDRACOLoader( dracoLoader );
+    // // Optional: Provide a DRACOLoader instance to decode compressed mesh data
+    // const dracoLoader = new DRACOLoader();
+    // dracoLoader.setDecoderPath( '/examples/jsm/libs/draco/' );
+    // campusLoader.setDRACOLoader( dracoLoader );
 
     let campus;
 
@@ -259,7 +259,13 @@ switchView.addEventListener('click', () => {
     if (state === 0) {
         state = 1;
         scene.children[4].visible = false
-        scene.children[5].visible = true
+        try {
+            scene.children[5].visible = true
+        } catch (error) {
+            goto.innerHTML = "Satellite view not ready yet!"
+            state = 0
+            scene.children[4].visible = true
+        }
     }
     else if (state === 1) {
         state = 0;
