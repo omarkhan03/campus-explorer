@@ -47,7 +47,7 @@ function clearScene() {
 
 function loadICT() {
     state = 0
-    clearScene()
+    // clearScene()
     const ICTLoader = new ColladaLoader()
     ICTLoader.load("/models/ICT/ICT_COLLADA.dae", function (result) {
 
@@ -80,8 +80,8 @@ function loadICT() {
 }
 
 function loadCampus() {
-    state = 1
-    clearScene()
+    // state = 1
+    // clearScene()
     // Instantiate a loader
     const campusLoader = new GLTFLoader();
 
@@ -107,11 +107,16 @@ function loadCampus() {
 
             scene.add( campus );
 
+
             gltf.animations; // Array<THREE.AnimationClip>
             gltf.scene; // THREE.Group
             gltf.scenes; // Array<THREE.Group>
             gltf.cameras; // Array<THREE.Camera>
             gltf.asset; // Object
+
+            if (state === 0) {
+                scene.children[5].visible = false
+            }
 
         },
         // called while loading is progressing
@@ -128,9 +133,9 @@ function loadCampus() {
         }
     );
 }
+
 loadICT()
-
-
+loadCampus()
 
 
 // Selected floor
@@ -195,6 +200,8 @@ floor4.addEventListener('click', () => {
 })
 
 floor3.addEventListener('click', () => {
+    console.log(scene)
+
     disableGoto()
     goto.innerHTML = "Floor 3 inside view coming soon!"
     selectedFloor = 3
@@ -250,10 +257,14 @@ goto.addEventListener('click', () => {
 
 switchView.addEventListener('click', () => {
     if (state === 0) {
-        loadCampus()
+        state = 1;
+        scene.children[4].visible = false
+        scene.children[5].visible = true
     }
-    else {
-        loadICT()
+    else if (state === 1) {
+        state = 0;
+        scene.children[4].visible = true
+        scene.children[5].visible = false
     }
 })
 
@@ -356,20 +367,6 @@ const controls = new OrbitControls(camera, canvas)
 controls.target.set(-1000, 0, -2000)
 controls.enableDamping = true
 controls.saveState()
-
-// {
-//     "x": -1084.8761315512888,
-//     "y": 89.24873979487634,
-//     "z": 381.2835663043385
-// }
-
-// {
-//     "isEuler": true,
-//     "_x": -0.2725851439463529,
-//     "_y": 0.030744339940205662,
-//     "_z": 0.008592808522515549,
-//     "_order": "XYZ"
-// }
 
 
 // Resets camera rotation + selected floor
