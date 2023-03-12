@@ -2,7 +2,7 @@ import { state } from './script.js'
 import { selectedFloor } from './script.js'
 
 window.addEventListener('keydown', e=> {
-    if (e.key == 'q' && state == 1) {
+    if (e.key == 'q' && state == 2) {
         
     }
 })

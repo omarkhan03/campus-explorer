@@ -1,6 +1,8 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
 import { navToFloor } from './matterport';
 
@@ -19,6 +21,7 @@ const floor3 = document.getElementsByClassName('f3')[0]
 const floor2 = document.getElementsByClassName('f2')[0]
 const floor1 = document.getElementsByClassName('f1')[0]
 const reset = document.getElementsByClassName('reset')[0]
+const switchView = document.getElementsByClassName('switch')[0]
 const goto = document.getElementById('goto')
 const sourceCode = document.getElementById('source-code')
 
@@ -33,35 +36,109 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
-// Loading ICT model 
-var loader = new ColladaLoader();
-loader.load("/models/ICT/ICT_COLLADA.dae", function (result) {
+function clearScene() {
+    // while(scene.children.length > 0){ 
+    //     scene.remove(scene.children[0]); 
+    //     console.log("removed " + scene.children[0])
+    // }
 
-    const meshes = result.scene.children[0].children
+    scene.remove(scene.children[4])
+}
 
-    // Adds outline to each mesh
-    for(const mesh of meshes) {
-        mesh.translateZ(-400)
-        mesh.translateX(-200)
+function loadICT() {
+    state = 0
+    clearScene()
+    const ICTLoader = new ColladaLoader()
+    ICTLoader.load("/models/ICT/ICT_COLLADA.dae", function (result) {
 
-        const geometry = mesh.geometry
-        const edges = new THREE.EdgesGeometry(geometry)
-        const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 1 }))
-    
-        line.translateZ(-400)
-        line.translateX(-200)
-    
-        result.scene.add(line);
-    }
+        // const meshes = result.scene.children[0].children
 
-    scene.add(result.scene);
-});
+        // Adds outline to each mesh
+        // for(const mesh of meshes) {
+        //     mesh.translateZ(-400)
+        //     mesh.translateX(-200)
+
+        //     const geometry = mesh.geometry
+        //     const edges = new THREE.EdgesGeometry(geometry)
+        //     const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 1 }))
+        
+        //     line.translateZ(-400)
+        //     line.translateX(-200)
+        
+        //     result.scene.add(line);
+        // }
+
+        var ICT = result.scene
+
+        ICT.position.set(-1400, -1320, -1500)
+        ICT.rotation.set(-Math.PI/2, 0, -Math.PI/2)
+        ICT.scale.set(0.6,0.6,0.6)
+
+        scene.add(result.scene);
+        console.log(scene)
+    });
+}
+
+function loadCampus() {
+    state = 1
+    clearScene()
+    // Instantiate a loader
+    const campusLoader = new GLTFLoader();
+
+    // Optional: Provide a DRACOLoader instance to decode compressed mesh data
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath( '/examples/jsm/libs/draco/' );
+    campusLoader.setDRACOLoader( dracoLoader );
+
+    let campus;
+
+    // Load a glTF resource
+    campusLoader.load(
+        // resource URL
+        '/models/low-res-campus.glb',
+        // called when the resource is loaded
+        function ( gltf ) {
+
+            campus = gltf.scene;
+            campus.scale.set(10000,10000,10000)
+            campus.translateX(21000)
+            // campusScene.translateZ(50)
+            campus.translateY(-3700)
+
+            scene.add( campus );
+
+            gltf.animations; // Array<THREE.AnimationClip>
+            gltf.scene; // THREE.Group
+            gltf.scenes; // Array<THREE.Group>
+            gltf.cameras; // Array<THREE.Camera>
+            gltf.asset; // Object
+
+        },
+        // called while loading is progressing
+        function ( xhr ) {
+
+            console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+        },
+        // called when loading has errors
+        function ( error ) {
+
+            console.log( 'An error happened' );
+
+        }
+    );
+}
+loadICT()
+
+
+
 
 // Selected floor
-const geometry = new THREE.BoxGeometry(130,5,70)
+const geometry = new THREE.BoxGeometry(70,5,130)
 const material = new THREE.MeshBasicMaterial({ color: "green", opacity: 0.2, transparent: true})
 const selected = new THREE.Mesh(geometry, material)
 selected.material.depthWrite = false;
+selected.scale.set(22,22,22)
 scene.add(selected)
 selected.visible = false
 
@@ -78,11 +155,16 @@ function enableGoto() {
 }
 
 floor7.addEventListener('click', () => { 
+
+    console.log(camera.position)
+    console.log(camera.rotation)
+
     disableGoto()
     goto.innerHTML = "Floor 7 inside view coming soon!"
     selectedFloor = 7
     selected.visible = true
-    selected.position.set(-11, 19, -8)
+    // selected.position.set(-11, 19, -8)
+    selected.position.set(-1200, -600, -1900)
 })
 
 floor6.addEventListener('click', () => { 
@@ -90,7 +172,8 @@ floor6.addEventListener('click', () => {
     goto.innerHTML = "Floor 6 inside view coming soon!"
     selectedFloor = 6
     selected.visible = true
-    selected.position.set(-11, 15, -8)
+    // selected.position.set(-11, 15, -8)
+    selected.position.set(-1200, -710, -1900)
 })
 
 floor5.addEventListener('click', () => {
@@ -98,7 +181,8 @@ floor5.addEventListener('click', () => {
     goto.innerHTML = "Floor 5 inside view coming soon!"
     selectedFloor = 5
     selected.visible = true
-    selected.position.set(-11, 11, -8)
+    // selected.position.set(-11, 11, -8)
+    selected.position.set(-1200, -820, -1900)
 })
 
 floor4.addEventListener('click', () => {
@@ -106,7 +190,8 @@ floor4.addEventListener('click', () => {
     goto.innerHTML = "Floor 4 inside view coming soon!"
     selectedFloor = 4
     selected.visible = true
-    selected.position.set(-11, 7, -8)
+    // selected.position.set(-11, 7, -8)
+    selected.position.set(-1200, -930, -1900)
 })
 
 floor3.addEventListener('click', () => {
@@ -114,7 +199,9 @@ floor3.addEventListener('click', () => {
     goto.innerHTML = "Floor 3 inside view coming soon!"
     selectedFloor = 3
     selected.visible = true
-    selected.position.set(-11, 3, -8)
+    // selected.position.set(-11, 3, -8)
+    selected.position.set(-1200, -1040, -1900)
+
 })
 
 floor2.addEventListener('click', () => {
@@ -122,7 +209,8 @@ floor2.addEventListener('click', () => {
     goto.innerHTML = "Click for inside view of floor 2! -->"
     selectedFloor = 2
     selected.visible = true
-    selected.position.set(-11, -2, -8)
+    // selected.position.set(-11, -2, -8)
+    selected.position.set(-1200, -1150, -1900)
 })
 
 floor1.addEventListener('click', () => {
@@ -130,8 +218,8 @@ floor1.addEventListener('click', () => {
     goto.innerHTML = "Click for inside view of floor 1! -->"
     selectedFloor = 1
     selected.visible = true
-    selected.position.set(-11, -8, -8)
-    console.log(camera.position)
+    // selected.position.set(-11, -8, -8)
+    selected.position.set(-1200, -1260, -1900)
 })
 
 goto.addEventListener('click', () => {
@@ -158,7 +246,16 @@ goto.addEventListener('click', () => {
                 break;
         }
     }
-    })
+})
+
+switchView.addEventListener('click', () => {
+    if (state === 0) {
+        loadCampus()
+    }
+    else {
+        loadICT()
+    }
+})
 
 // This hides everything except for the matterport iframe
 function activateMatterport (){
@@ -241,8 +338,11 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000000)
-camera.rotation.set(-0.06, -0.76, 0.04)
-camera.position.set(-78.6, 32, 45)
+// camera.rotation.set(-0.06, -0.76, 0.04)
+// camera.position.set(-78.6, 32, 45)
+
+camera.position.set(-1084.87, 89.24, 1000)
+camera.rotation.set(-0.27, 0.03, 0.01)
 
 if (x.matches) {
     // If media query matches
@@ -253,9 +353,23 @@ scene.add(camera)
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
-controls.target.set(-10, 0, -10)
+controls.target.set(-1000, 0, -2000)
 controls.enableDamping = true
 controls.saveState()
+
+// {
+//     "x": -1084.8761315512888,
+//     "y": 89.24873979487634,
+//     "z": 381.2835663043385
+// }
+
+// {
+//     "isEuler": true,
+//     "_x": -0.2725851439463529,
+//     "_y": 0.030744339940205662,
+//     "_z": 0.008592808522515549,
+//     "_order": "XYZ"
+// }
 
 
 // Resets camera rotation + selected floor
