@@ -142,7 +142,7 @@ loadCampus()
 
 // Selected floor
 const geometry = new THREE.BoxGeometry(70,5,130)
-const material = new THREE.MeshBasicMaterial({ color: "green", opacity: 0.2, transparent: true})
+const material = new THREE.MeshBasicMaterial({ color: "red", opacity: 0.2, transparent: true})
 const selected = new THREE.Mesh(geometry, material)
 selected.material.depthWrite = false;
 selected.scale.set(22,22,22)
@@ -151,7 +151,7 @@ selected.visible = false
 
 function disableGoto() {
     goto.className = "goto-inactive"
-    selected.material = new THREE.MeshBasicMaterial({ color: "green", opacity: 0.2, transparent: true})
+    selected.material = new THREE.MeshBasicMaterial({ color: "red", opacity: 0.2, transparent: true})
     selected.material.depthWrite = false;
 }
 
