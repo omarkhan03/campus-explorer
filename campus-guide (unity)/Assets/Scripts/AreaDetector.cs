@@ -112,39 +112,48 @@ public class AreaDetector : MonoBehaviour
     void Update()
     {
 
-        if (inArea != null) {
-
-            // checking if the player is still in an elevator area
-            if (inArea == elevators1 || inArea == elevators2) {
-                if (!player.GetComponent<Collider>().bounds.Intersects(elevators1.GetComponent<Collider>().bounds) &&
-                !player.GetComponent<Collider>().bounds.Intersects(elevators2.GetComponent<Collider>().bounds)) {
-                    deactivateElevators();
-                }
-
-                if (Input.GetKey(KeyCode.Alpha1)) {
-                    Console.Write("Player pressed 1");
-                    // set y coordinate of player to -3.5
-                    transform.position = new Vector3(transform.position.x, -3.5f, transform.position.z);
-                    activateElevators(1);
-                }
-
-                if (Input.GetKey(KeyCode.Alpha2)) {
-                    Console.Write("Player pressed 2");
-                    // set y coordinate of player to 2.8
-                    transform.position = new Vector3(transform.position.x, 2.8f, transform.position.z);
-                    activateElevators(2);
-                }
-            
             // checking to see if the player is still in the area specified by the collider
-            } else {
-                if (!player.GetComponent<Collider>().bounds.Intersects(inArea.GetComponent<Collider>().bounds)) {
-                    Debug.Log("Player left area");
-                    // areaIndicator.text = "Current area: -";
-                    inArea = null;
-                }
+            if ( inArea != null && !player.GetComponent<Collider>().bounds.Intersects(inArea.GetComponent<Collider>().bounds)) {
+                Debug.Log("Player left area");
+                // areaIndicator.text = "Current area: -";
+                inArea = null;
             }
 
-        }
+            if ( inArea != elevators1 && inArea != elevators2) {
+                deactivateElevators();
+            }
+
+
+            if (inArea == elevators2 && Input.GetKey(KeyCode.Alpha1)) {
+
+                    transform.position = new Vector3(transform.position.x, -3.5f, transform.position.z);
+                    activateElevators(2);
+
+            }
+
+
+            if (inArea == elevators1 && Input.GetKey(KeyCode.Alpha2)) {
+
+                    transform.position = new Vector3(transform.position.x, 2.8f, transform.position.z);
+                    activateElevators(1);
+
+
+            }
+
+            // // checking if the player is still in an elevator area
+            // if (inArea == elevators1 || inArea == elevators2) {
+            //     if (!player.GetComponent<Collider>().bounds.Intersects(elevators1.GetComponent<Collider>().bounds) &&
+            //     !player.GetComponent<Collider>().bounds.Intersects(elevators2.GetComponent<Collider>().bounds)) {
+            //         deactivateElevators();
+            //     }
+
+
+            
+            // } else {
+
+            // }
+
+    
 
     }
 
@@ -153,12 +162,10 @@ public class AreaDetector : MonoBehaviour
 
         if (floor == 1) {
             inArea = elevators1;
-            Debug.Log("Player entered elevators 1!!!!!");
         } else if (floor == 2) {
             inArea = elevators2;
         }
         
-
         elevatorOptionsBG.enabled = true;
         elevatorOptionsHeader.enabled = true;
         elevatorOptions.enabled = true;
