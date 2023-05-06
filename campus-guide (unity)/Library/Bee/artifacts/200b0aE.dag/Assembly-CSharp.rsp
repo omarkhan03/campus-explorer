@@ -353,9 +353,14 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/NavMeshComponents/Scripts/NavMeshLink.cs"
+"Assets/NavMeshComponents/Scripts/NavMeshModifier.cs"
+"Assets/NavMeshComponents/Scripts/NavMeshModifierVolume.cs"
+"Assets/NavMeshComponents/Scripts/NavMeshSurface.cs"
 "Assets/Scripts/AreaDetector.cs"
 "Assets/Scripts/FaceUser.cs"
 "Assets/Scripts/FPSController.cs"
+"Assets/Scripts/Pathfinding.cs"
 -langversion:9.0
 
 /deterministic

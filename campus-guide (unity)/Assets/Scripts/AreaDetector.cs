@@ -123,38 +123,15 @@ public class AreaDetector : MonoBehaviour
                 deactivateElevators();
             }
 
-
             if (inArea == elevators2 && Input.GetKey(KeyCode.Alpha1)) {
-
-                    transform.position = new Vector3(transform.position.x, -3.5f, transform.position.z);
-                    activateElevators(2);
-
+                transform.position = new Vector3(transform.position.x, -3.5f, transform.position.z);
+                activateElevators(2);
             }
-
 
             if (inArea == elevators1 && Input.GetKey(KeyCode.Alpha2)) {
-
-                    transform.position = new Vector3(transform.position.x, 2.8f, transform.position.z);
-                    activateElevators(1);
-
-
+                transform.position = new Vector3(transform.position.x, 2.8f, transform.position.z);
+                activateElevators(1);
             }
-
-            // // checking if the player is still in an elevator area
-            // if (inArea == elevators1 || inArea == elevators2) {
-            //     if (!player.GetComponent<Collider>().bounds.Intersects(elevators1.GetComponent<Collider>().bounds) &&
-            //     !player.GetComponent<Collider>().bounds.Intersects(elevators2.GetComponent<Collider>().bounds)) {
-            //         deactivateElevators();
-            //     }
-
-
-            
-            // } else {
-
-            // }
-
-    
-
     }
 
     private void activateElevators(int floor) {
